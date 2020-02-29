@@ -1,0 +1,75 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="head_pic">
+    <image src="../../img/banner.png"></image>
+  </view>
+  <!-- 全国疫情详情 -->
+  <view class="desc">
+    <view class="desc_title">全国疫情</view>
+    <view class="desc_time">统计截至{{newDate}}</view>
+    <view class="flex">
+      <view class="sure box">
+        <view class="red">现有确诊</view>
+        <view class="red">{{desc.nowConfirm}}</view>
+        <view class="newadd">较昨日{{modify.nowConfirm}}</view>
+      </view>
+      <view class="susp box">
+        <view class="orange">现有疑似</view>
+        <view class="orange">{{desc.suspect}}</view>
+        <view class="newadd">较昨日{{modify.suspect}}</view>
+      </view>
+      <view class="dead box">
+        <view class="gray">累计死亡</view>
+        <view class="gray">{{desc.dead}}</view>
+        <view class="newadd">较昨日{{modify.dead}}</view>
+      </view>
+      <view class="dead box">
+        <view class="green">累计治愈</view>
+        <view class="green">{{desc.heal}}</view>
+        <view class="newadd">较昨日{{modify.heal}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 本地疫情详情 -->
+  <view class="loc pad bg">
+    <view class="loc_title">本地疫情</view>
+    <view class="location">
+      <image src="../../img/location.png"></image>
+      <text class="city">{{address.city}}</text>
+    </view>
+  </view>
+  <view class="loc_desc bg">
+    <!-- 所在省 -->
+    <view class="flex proportion">
+      <view class="province">
+        {{address.province}}
+      </view>
+      <view>确诊{{hometown.currentConfirmedCount}}例</view>
+      <view>死亡{{hometown.deadCount}}例</view>
+      <view>治愈{{hometown.curedCount}}例</view>
+    </view>
+    <!-- 所在市 -->
+    <view class="flex proportion">
+      <view class="province">
+        {{address.city}}
+      </view>
+      <view>确诊{{hometown.cityCurrentConfirmedCount}}例</view>
+      <view>死亡{{hometown.cityDeadCount}}例</view>
+      <view>治愈{{hometown.cityCuredCount}}例</view>
+    </view>
+  </view>
+  <view class="map flex">
+    <view class="map_title">
+      全国疫情分布图  
+    </view>
+    <view class="map_desc">
+      数据来源国家及各省市地区卫健委
+    </view>
+  </view>
+  <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ec}}"></ec-canvas>
+  <view class="line_title">
+    疫情趋势
+  </view>
+  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ec}}"></ec-canvas>
+</view>
